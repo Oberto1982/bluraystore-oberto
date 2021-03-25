@@ -1,0 +1,14 @@
+
+
+.icon {
+
+    cursor: pointer;
+    color: #fff;
+    transition: all .1s ease-in-out; 
+
+  }
+  
+.icon :hover {
+    transform: scale(2.1);
+
+} 

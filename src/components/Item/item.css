@@ -8,7 +8,9 @@ img {
     display: flex;
     width: 300px;
     height: auto;
-    margin: 1rem;
+    margin: 0.5rem;
+    margin-top:1rem;
+    margin-bottom: 0.2rem;
     position: relative;
     justify-content: center;
     flex-direction: column;
@@ -24,7 +26,7 @@ img {
   }
   
   .card-1:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(19, 36, 187, 0.25), 0 10px 10px rgba(56, 53, 223, 0.22);
   }
 
   .sub-main{
