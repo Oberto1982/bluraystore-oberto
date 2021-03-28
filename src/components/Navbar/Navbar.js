@@ -3,6 +3,9 @@ import {MenuItems} from "./MenuItems"
 import './Navbar.css'
 import CartWidget from "../Cardwidget";
 
+import { Link } from 'react-router-dom';
+
+
 
 class Navbar extends Component{
     state =  { clicked: false}  
@@ -14,7 +17,7 @@ class Navbar extends Component{
     render(){
         return(
             <nav className="NavbarItems">
-                <h1 className="navbar-logo">Mi Tienda</h1>
+                <h1><Link to='/' className="navbar-logo">Mi Tienda</Link></h1>
                 <div className="menu-icon" onClick={this.handleClick}>
                 <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>

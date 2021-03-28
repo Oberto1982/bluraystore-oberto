@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
+
+
 export const MenuItems = [
     {
         title: 'Home',
-        url: '#',
+        url: <Link to='/detail'></Link>,
         cName: 'nav-links' 
     },
 
