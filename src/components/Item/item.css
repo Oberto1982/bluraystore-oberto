@@ -79,3 +79,8 @@ img {
     opacity: 1;
     transition: 0s
 }
+
+.text-link {
+  color: black;
+  text-decoration: inherit;
+}

@@ -1,8 +1,15 @@
-import React from 'react';
-import Navbar from "./components/Navbar/Navbar";
-import './App.css';
+//import React from 'react';
+// import Navbar from "./components/Navbar/Navbar";
+// import './App.css';
+// import ItemListContainer from "./components/ItemListContainer";
+// import ItemDetailContainer from "./components/ItemDetailContainer";
+// import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import "./App.css";
+import { NavBar } from "./components/Navbar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 
@@ -12,14 +19,15 @@ function App() {
 
     <BrowserRouter >
     <div className="App">
-      <Navbar />
+      <NavBar />
       <Switch>
         <Route exact path='/'>
+        <ItemListContainer />  
         </Route>
-        <Route path='/list'>  
+        <Route path='/category/:categoryId'>  
         <ItemListContainer />
         </Route>   
-        <Route path='/detail'>
+        <Route path='/item/:itemId'>
         <ItemDetailContainer /> 
         </Route>  
         <Route path='*' >
