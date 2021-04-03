@@ -28,6 +28,8 @@ export default function ItemDetailContainer() {
         return;
     }, [itemId])
 
-    return <> {itemId}
+    return <> 
+    <div className="d-flex justify-content-center ">
+    {itemId} es el Id de la pelicula </div>
     <ItemDetail item={item} /></>
     }

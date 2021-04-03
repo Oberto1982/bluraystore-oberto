@@ -1,10 +1,10 @@
 import React from 'react';
-import Counter from '../ItemCount';
+//import Counter from '../ItemCount';
 import "./item.css";
 
 import {Link} from "react-router-dom";
 
-export const Item = ({ item }) => {
+export const Item = ({ item, onAdd }) => {
   return (
 
     
@@ -18,9 +18,8 @@ export const Item = ({ item }) => {
         <div><h5 class="mt-4">${item.price}</h5></div>
       </div>
       <div class="sub-main">
-      <button class="button-three">Add to Cart</button>
     </div>
-      <Counter />
+     {/* <Counter /> */}
     </div>
 
    

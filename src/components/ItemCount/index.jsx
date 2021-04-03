@@ -1,57 +1,57 @@
-import React from 'react';
-import "./itemcount.css";
+import React, { useState } from "react";
 
-class Counter extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        counter: 0
-      };
-    }
-  
-    increment() {
-      this.setState(prevState => ({
-        counter: this.state.counter + 1
-      }));
-    }
-  
-    decrement() {
-      if (this.state.counter === 0) {
-        this.setState({
-          counter: 0
-        });
-      } else {
-        this.setState(prevState => ({
-          counter: this.state.counter - 1
-        }));
-      }
-    }
-  
-    render() {
-      return (
-        <div>
-          <div className="counter">
-            <button
-              className="counter-btn"
-              onClick={this.decrement.bind(this)}
-            >
-              -
-            </button>
-            
-            
-            <input type="text" size="4" value={this.state.counter} />
-           
-            
-            <button
-              className="counter-btn"
-              onClick={this.increment.bind(this)}
-            >
-              +
-            </button>
-            </div>
-        </div>
-      );
-    }
-  }
 
-export default Counter;
+export function ItemCount({ stock, initial, onAdd }) {
+  const [count, setCount] = useState(parseInt(initial));
+
+
+
+  const addHandle = () => {
+    setCount(count + 1);
+  };
+
+  const removeHandle = () => {
+    setCount(count - 1);
+  };
+  
+
+  const agregar = () => {
+    onAdd(count)
+  };
+
+  return (
+    <div className="w-25 flex-column align-items-strech">
+
+
+      <div className=" btn btn-light m-2 p-2 d-flex flex-row justify-content-around align-items-center border-secondary border rounded">
+        <button
+          disabled={count <= 0}
+          className="btn btn-dark"
+          type="button"
+          onClick={removeHandle}
+        >
+          -
+        </button>
+        <div>{count}</div>
+        <button
+          disabled={count >= stock}
+          className="btn btn-dark"
+          type="button"
+          onClick={addHandle}
+        >
+          +
+        </button>
+      </div>
+      <button
+        
+        className="btn btn-success  w-75"
+        type="button"
+        onClick={agregar }
+      >
+        Agregar al carrito
+      </button>
+    </div>
+  );
+}
+
+export default ItemCount;

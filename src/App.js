@@ -22,7 +22,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/'>
-        <ItemListContainer />  
+       Home
         </Route>
         <Route path='/category/:categoryId'>  
         <ItemListContainer />
@@ -34,17 +34,12 @@ function App() {
          404
         </Route>
       </Switch> 
-      
-    
-{/* WhatsApp icon */}
-<a
-        href="https://wa.me/1130237550  "
-        class="whatsapp_float"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <i class="fab fa-whatsapp"></i>
+
+      <a href="https://web.whatsapp.com/send?phone=55229999999" class="float"  tooltip="Hola, te puedo ayudar?">
+      <i class="fab fa-whatsapp"></i>
       </a>
+
+
     
     </div>
 
