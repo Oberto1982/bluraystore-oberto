@@ -48,7 +48,7 @@ img {
     width: auto;
     height: auto;
     text-align: center;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
     text-decoration: none;
     overflow: hidden;

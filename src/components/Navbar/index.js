@@ -59,7 +59,7 @@ export const NavBar = () => {
           <NavLink exact to='/' activeClassName="active" className="nav-item nav-link" >
             Home
           </NavLink>
-          <NavLink to={`/category/4k`} activeClassName="active" className="nav-item nav-link" >
+          <NavLink to={`/category/4K`} activeClassName="active" className="nav-item nav-link" >
             4k UHD
           </NavLink>
           <NavLink to={`/category/Bluray`} activeClassName="active" className="nav-item nav-link" >

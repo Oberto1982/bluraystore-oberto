@@ -11,28 +11,27 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import { CartProvider} from "./context/CartContext";
 
 
 function App() {
   return (
-
+    
+    <CartProvider>
     <BrowserRouter >
     <div className="App">
       <NavBar />
       <Switch>
         <Route exact path='/'>
-       Home
+        <ItemListContainer />
         </Route>
         <Route path='/category/:categoryId'>  
         <ItemListContainer />
         </Route>   
         <Route path='/item/:itemId'>
         <ItemDetailContainer /> 
-        </Route>  
-        <Route path='*' >
-         404
         </Route>
+
       </Switch> 
 
       <a href="https://web.whatsapp.com/send?phone=55229999999" class="float"  tooltip="Hola, te puedo ayudar?">
@@ -44,6 +43,7 @@ function App() {
     </div>
 
     </BrowserRouter>
+    </CartProvider>
   );
 }
 
