@@ -9,9 +9,10 @@ export default function ItemDetail({ item }) {
 
     const [count, setCount] = useState(0)
     
-    const {addItem, cart} = useContext(CartContext);
+    const {addItem} = useContext(CartContext);
 
-    const addHandler = (contador)=>{
+    const addHandler = (b)=>{
+       const contador = parseInt(b) 
        console.log('se agrego un item', contador)
        addItem(item, contador)
        setCount(contador)
@@ -40,9 +41,9 @@ export default function ItemDetail({ item }) {
             <div>Prize : ${item?.price}</div>
             </div>
 
-            { count == 0 ?
+            { count === 0 ?
 
-            <ItemCount stock="6" initial="1" onAdd={addHandler}  />
+            (item?.title && <ItemCount stock={6} initial={1} onAdd={addHandler}/>)
                 :
             <Link to='/cart'>
             <button className="btn btn-success">Terminar mi Compra</button>    
