@@ -36,12 +36,7 @@ export default function ItemDetailContainer() {
 
                if (res.exists){
 
-                const obj = {
-                    id: res.id,
-                    ...res.data
-                }
-
-                setItem(obj) // si existe me quedo con la data del objeto
+                setItem({id:res.id, ...res.data()}) // si existe me quedo con la data del objeto
                }
            })
 
