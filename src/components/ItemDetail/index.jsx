@@ -26,16 +26,16 @@ export default function ItemDetail({ item }) {
             {count} "items agregados"
 
             <div className="d-flex flex-column flex-wrap mb-3 justify-content-center align-items-center" >
-            <img src={item?.img} alt=""/>
+            <img src={item?.pictureUrl} alt=""/>
             </div>
             <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center"> 
             <h4>{item?.title}</h4>
             </div>
             <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center">
-            <h6><b>Overview : </b>{item?.description}</h6>
+            <h6><b>Storyline : </b>{item?.storyline}</h6>
             </div>
             <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center">
-            <h6><b>Specifications :</b> {item?.specs}</h6>
+            <h6><b>Tech Specs & Release Details :</b> {item?.specs}</h6>
             </div>
             <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center">
             <div>Prize : ${item?.price}</div>

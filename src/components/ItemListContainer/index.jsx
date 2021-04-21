@@ -58,10 +58,27 @@ export default function ItemListContainer() {
 
     const db = getFirestore();
     const itemsCollection = db.collection('items')
-    const filtro = itemsCollection // filtro por categoria
-          .where ('category', '==', categoryId)
-    const prom = filtro.get();
 
+    let filtro 
+    if (categoryId){
+      filtro = itemsCollection // filtro por categoria
+          .where ('category', '==', categoryId)
+    }
+    else {
+      filtro = itemsCollection;
+    }
+    
+
+    // const filtro = categoryId ?   // "otra forma de filtrar"
+    //                        itemsCollection
+    //                               .where ('category', '==', categoryId)
+    //                        :
+    //                        itemsCollection;           
+
+
+
+    const prom = filtro.get();
+    
 
 
     prom.then((snapshot)=>{
@@ -80,6 +97,8 @@ export default function ItemListContainer() {
         }
 
         ))
+
+       
 
       }
 

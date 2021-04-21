@@ -35,7 +35,13 @@ export default function ItemDetailContainer() {
                console.log ( 'existe?', res.exists);
 
                if (res.exists){
-                setItem(res.data()) // si existe me quedo con la data del objeto
+
+                const obj = {
+                    id: res.id,
+                    ...res.data
+                }
+
+                setItem(obj) // si existe me quedo con la data del objeto
                }
            })
 

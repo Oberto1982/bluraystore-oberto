@@ -58,7 +58,7 @@ export const NavBar = () => {
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <NavLink exact to='/' activeClassName="active" className="nav-item nav-link" >
+          <NavLink exact to={`/`} activeClassName="active" className="nav-item nav-link" >
            Home 
           </NavLink>
           <NavLink to={`/category/4K`} activeClassName="active" className="nav-item nav-link" >
