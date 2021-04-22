@@ -34,14 +34,14 @@ function App() {
         </Route>
 
         <Route path="/cart">
-          <h2>Estoy en el cart</h2>
+        {/* <h2>Estoy en el cart</h2> */}
           <Cart />
         </Route>
 
       </Switch> 
 
-      <a href="https://web.whatsapp.com/send?phone=55229999999" class="float"  tooltip="Hola, te puedo ayudar?">
-      <i class="fab fa-whatsapp"></i>
+      <a href="https://web.whatsapp.com/send?phone=55229999999" className="float"  tooltip="Hola, te puedo ayudar?">
+      <i className="fab fa-whatsapp"></i>
       </a>
 
 

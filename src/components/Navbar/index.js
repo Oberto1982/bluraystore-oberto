@@ -46,8 +46,6 @@ import React from "react";
 import CartWidget from "../Cardwidget";
 
 import {Link, NavLink} from 'react-router-dom'
-import ItemDetail from "../ItemDetail";
-import ItemListContainer from "../ItemListContainer";
 
 export const NavBar = () => {
   return (
@@ -70,14 +68,16 @@ export const NavBar = () => {
         </div>
 
         <div>
+        <NavLink to= "/cart" activeClassName="active" className="nav-item nav-link" > 
         <CartWidget />
+        </NavLink> 
         </div> 
       </div>
 
      
 
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNavAltMarkup"
@@ -85,7 +85,7 @@ export const NavBar = () => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
     </nav>
   );
