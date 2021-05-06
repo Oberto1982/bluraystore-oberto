@@ -41,6 +41,7 @@ export default function ItemDetail({ item }) {
             <div>Prize : ${item?.price}</div>
             </div>
 
+
             { count === 0 ?
 
             (item?.title && <ItemCount stock={6} initial={1} onAdd={addHandler}/>)
