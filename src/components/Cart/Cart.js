@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react'
 import {Link} from "react-router-dom";
 import {CartContext} from "../../context/CartContext";
 import {getFirestore, getFirebase} from '../../firebase'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 
 
@@ -27,7 +29,7 @@ export const Cart = () => {
 
         const ordersCollection = db.collection("orders")
 
-        const date = getFirebase().firestore.Timestamp.fromDate(new Date());
+        const date = firebase.firestore.Timestamp.fromDate(new Date());
 
         const items = cart.map( cartItem =>{
             return { id: cartItem.id, title:cartItem.title, price: cartItem.price}
@@ -39,6 +41,9 @@ export const Cart = () => {
             setIdOrden(doc.id)
         })
         
+        
+
+
         
         const itemsCollection = db.collection('items')
         .where(getFirebase().firestore.FieldPath.documentId(), 'in', cart.map(e => e.item.id))
@@ -95,12 +100,21 @@ export const Cart = () => {
             <button onClick={clear}>Borrar todo</button>         
 
             <form action=""  onSubmit={generarOrden}>
-
+                <div className="container p-1">
+                <label for="fname">Name:</label>
                 <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
-                <input type="text" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
-                <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-
+                </div>
+                <div className="container p-1">
+                <label for="fname">Phone:</label>
+                <input type="number" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
+                </div>
+                <div className="container p-1">
+                <label for="fname">Email:</label>
+                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                </div> 
+                <div className="container p-3">
                 <button type="submit"> Generar orden</button>
+                </div>
             </form>
 
         </div>
