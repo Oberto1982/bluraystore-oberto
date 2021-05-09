@@ -1,92 +1,48 @@
-// import React, {Component} from 'react';
-// import {MenuItems} from "./MenuItems"
-// import './Navbar.css'
-// import CartWidget from "../Cardwidget";
-
-// import { Link } from 'react-router-dom';
-
-
-
-// class Navbar extends Component{
-//     state =  { clicked: false}  
-
-//     handleClick = () =>{
-//         this.setState({clicked: !this.state.clicked})
-//     }
-
-//     render(){
-//         return(
-//             <nav className="NavbarItems">
-//                 <h1><Link to='/' className="navbar-logo">Mi Tienda</Link></h1>
-//                 <div className="menu-icon" onClick={this.handleClick}>
-//                 <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-//                 </div>
-//                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-//                     {MenuItems.map((item, index)=> {
-//                         return (
-//                         <li key={index}>
-//                             <a className={item.cName} href={item.url}>
-//                             {item.title}
-//                             </a>
-//                         </li>  
-                        
-//                         )
-//                     })}
-              
-//                 </ul>
-//                 <CartWidget /> 
-//             </nav>
-//         )
-//     }
-// }
-
-// export default Navbar
-
 import React from "react";
 import CartWidget from "../Cardwidget";
 
+
 import {Link, NavLink} from 'react-router-dom'
+import "./index.css";
+
+
 
 export const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link to='/' className="navbar-brand" >
-        Mi Tienda
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="container-fluid">
+  <Link to='/' className="navbar-brand" >
+       BD STORE
       </Link>
-
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          <NavLink exact to={`/`} activeClassName="active" className="nav-item nav-link" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item link6">
+        <NavLink exact to={`/`} activeClassName="active" className="nav-item nav-link site-nav__link" >
            Home 
           </NavLink>
-          <NavLink to={`/category/4K`} activeClassName="active" className="nav-item nav-link" >
+        </li>
+        <li class="nav-item">
+        <NavLink to={`/category/4K`} activeClassName="active" className="nav-item nav-link site-nav__link" >
             4k UHD
           </NavLink>
-          <NavLink to={`/category/Bluray`} activeClassName="active" className="nav-item nav-link" >
+        </li>
+        <li class="nav-item">
+        <NavLink to={`/category/Bluray`} activeClassName="active" className="nav-item nav-link site-nav__link" >
             Bluray-3D 
           </NavLink>
-        </div>
-
-        <div>
+        </li>
+        <li class="nav-item">
         <NavLink to= "/cart" activeClassName="active" className="nav-item nav-link" > 
         <CartWidget />
         </NavLink> 
-        </div> 
-      </div>
-
-     
-
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-    </nav>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
   );
 };
+

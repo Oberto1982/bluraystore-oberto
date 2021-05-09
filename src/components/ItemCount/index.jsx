@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./itemcount.css";
 
 
 export function ItemCount({ stock, initial, onAdd }) {
@@ -20,13 +21,13 @@ export function ItemCount({ stock, initial, onAdd }) {
   };
 
   return (
-    <div className="w-25 flex-column align-items-strech">
+    <div >
 
 
-      <div className=" btn btn-light m-2 p-2 d-flex flex-row justify-content-around align-items-center border-secondary border rounded">
+      <div className=" btn-counter m-2 p-2 d-flex  justify-content-around align-items-center border rounded">
         <button
           disabled={count <= 0}
-          className="btn btn-dark"
+          className="btn-incdec"
           type="button"
           onClick={removeHandle}
         >
@@ -35,7 +36,7 @@ export function ItemCount({ stock, initial, onAdd }) {
         <div>{count}</div>
         <button
           disabled={count >= stock}
-          className="btn btn-dark"
+          className="btn-incdec"
           type="button"
           onClick={addHandle}
         >
@@ -44,7 +45,7 @@ export function ItemCount({ stock, initial, onAdd }) {
       </div>
       <button
         
-        className="btn btn-success  w-75"
+        className="btn-cart"
         type="button"
         onClick={agregar }
       >

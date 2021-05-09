@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import "./cartwidget.css";
 
 const CartWidget = () => {
 
@@ -8,7 +7,7 @@ const CartWidget = () => {
 
   return ( <>
      
-    <div className="icon">
+    <div>
     <i className="fas fa-shopping-cart">({totalItems})</i>
     </div>
     

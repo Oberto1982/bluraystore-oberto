@@ -4,7 +4,8 @@ import {CartContext} from "../../context/CartContext";
 import {getFirestore, getFirebase} from '../../firebase'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-
+import "./Cart.css";
+import { format } from "../Format/format";
 
 
 
@@ -23,23 +24,32 @@ export const Cart = () => {
         e.preventDefault();
         const comprador = { name, phone, email }
 
-        
+        console.log(comprador)
 
         const db = getFirestore();
 
+     
+
         const ordersCollection = db.collection("orders")
 
+
         const date = firebase.firestore.Timestamp.fromDate(new Date());
+
+        
 
         const items = cart.map( cartItem =>{
             return { id: cartItem.id, title:cartItem.title, price: cartItem.price}
         })
+
+        console.log(items)
+
 
         ordersCollection
         .add({buyer: comprador, items, date, total:totalPrecio})
         .then(doc=>{
             setIdOrden(doc.id)
         })
+        
         
         
 
@@ -77,7 +87,15 @@ export const Cart = () => {
 
     }
 
-    const noItemComp = <h2>No hay Items en el carrito <Link to='/'>Ir al home </Link> </h2>;
+    const noItemComp = 
+    <div className="main">
+    
+     <img className="img-empty" src="/img/empty.png" alt=""></img>
+       
+         <Link to='/' className="back" >Volver al Home </Link>
+         </div>
+    
+     
 
     if(totalItems === 0) return noItemComp
 
@@ -86,36 +104,56 @@ export const Cart = () => {
 
 
     return (
-        <div>
+        <div className="main">
             {idOrden? `Orden generada: ${idOrden}`: null}
-
+        <div className="main-item">   
             {cart.map(cartItem => (
-                <div key={cartItem.item.id} >
-                    <div> Titulo:  {cartItem.item.title}  </div>
-                    <div> cantidad: {cartItem.quantity} </div>
-                    <button onClick={()=> removeItem(cartItem.item.id)}>borrar</button>
+                <div className="main-btn" key={cartItem.item.id} >
+                    <div> 
+                        <img src={cartItem.item.pictureUrl} alt=""/>
+                    </div>
+                    <div className="main-title"> 
+                        {cartItem.item.title} 
+                    </div>
+                    <div className="main-title"> 
+                        Cantidad: {cartItem.quantity} 
+                    </div>
+                    
+                    <div> 
+                    <img className="img-icon" src="/img/delete.svg" alt=""  onClick={()=> removeItem(cartItem.item.id)}/>
+                    </div>
+
                 </div>)
                 )}
-            <div>Total:{totalItems} y {totalPrecio}</div> 
-            <button onClick={clear}>Borrar todo</button>         
-
-            <form action=""  onSubmit={generarOrden}>
-                <div className="container p-1">
-                <label for="fname">Name:</label>
-                <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
+            <div className="main-btn">
+                <p>Total Compra: {format(totalPrecio)}</p>
+            </div>
+           
+            <div className="main-btn"> 
+                <button className="btn-delete-all" onClick={clear}>Limpiar Carrito</button>
+            </div>
+            </div> 
+            <div className="form-title">
+            Formulario de Compra
+            </div>     
+            <form className="main-btn form-container" action=""  onSubmit={generarOrden}>
+                <div className="form">
+                <label for="fname">Nombre y Apellido:</label>
+                <input className="input" type="text" placeholder="Nombre y Apellido" required value={name} onChange={(e)=>setName(e.target.value)}/>
                 </div>
-                <div className="container p-1">
-                <label for="fname">Phone:</label>
-                <input type="number" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
+                <div className="form">
+                <label for="fname">Teléfono:</label>
+                <input className="input" type="number" placeholder="Telefono" required value={phone}  onChange={(e)=>setPhone(e.target.value)}/>
                 </div>
-                <div className="container p-1">
-                <label for="fname">Email:</label>
-                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                <div className="form">
+                <label for="fname">Correo Electrónico:</label>
+                <input className="input" type="email" placeholder="Correo Electronico" required value={email} onChange={(e)=>setEmail(e.target.value)}/>
                 </div> 
-                <div className="container p-3">
-                <button type="submit"> Generar orden</button>
+                <div className="btn-orden container p-3">
+                <button className="btn-cart" type="submit"> Confirmar</button>
                 </div>
             </form>
+        
 
         </div>
     )

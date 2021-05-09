@@ -1,3 +1,13 @@
+# Nombre Proyecto
+
+BD STORE
+
+# Descripción
+
+Tienda para venta de películas tanto en formato Bluray como 4K
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

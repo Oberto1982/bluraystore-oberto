@@ -1,12 +1,37 @@
-.counter-btn{
-    background-color:#b0b9cf ;
-    width: 35px;
-    height: 25px;
-    margin: 5px;
-    justify-content: center;
-    border: none;
+.btn-counter{
+    
+    border: rgb(228, 222, 222);
+    background-color: #616161;
+    border-radius: 5px;
+    width: auto;
+    color: white;
  
 }
+
+.btn-incdec{
+    border: rgb(228, 222, 222);
+    background-color: #616161;
+    border-radius: 5px;
+    color: white;
+    width: 25px;
+    height: 25px;
+}
+
+.btn-incdec:hover{
+    background-color: #ffb74d;
+    
+}
+
+.btn-cart{
+    border: rgb(228, 222, 222);
+    background-color: #4caf50;
+    border-radius: 5px;
+    width: auto;
+    color: white;
+    padding: 10px;
+
+}
+
 
 input { 
     text-align: center; 

@@ -3,6 +3,7 @@ import "./itemdetail.css";
 import { ItemCount } from "../ItemCount"
 import {Link} from 'react-router-dom';
 import { CartContext } from "../../context/CartContext";
+import { format } from "../Format/format";
 
 
 export default function ItemDetail({ item }) {
@@ -23,22 +24,19 @@ export default function ItemDetail({ item }) {
              
             <div className=" card-detail card-detail-1 d-flex flex-column flex-wrap mb-3 justify-content-center align-items-center">
             
-            {count} "items agregados"
+            {/* {count} "items agregados" */}
 
             <div className="d-flex flex-column flex-wrap mb-3 justify-content-center align-items-center" >
             <img src={item?.pictureUrl} alt=""/>
             </div>
-            <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center"> 
+            <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center name-container"> 
             <h4>{item?.title}</h4>
             </div>
-            <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center">
-            <h6><b>Storyline : </b>{item?.storyline}</h6>
-            </div>
-            <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center">
+            <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center specs-container">
             <h6><b>Tech Specs & Release Details :</b> {item?.specs}</h6>
             </div>
             <div className="d-flex flex-row flex-wrap mb-3 justify-content-center align-items-center">
-            <div>Prize : ${item?.price}</div>
+            <div> {format (item?.price)}</div>
             </div>
 
 
@@ -47,7 +45,7 @@ export default function ItemDetail({ item }) {
             (item?.title && <ItemCount stock={6} initial={1} onAdd={addHandler}/>)
                 :
             <Link to='/cart'>
-            <button className="btn btn-success">Terminar mi Compra</button>    
+            <button className="btn btn-success">Terminar Compra</button>    
             </Link>
             }
            

@@ -1,0 +1,39 @@
+.navbar{
+    background-color: #ffa90a; 
+    overflow: hidden;
+    font-size: 20px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    
+  }
+  
+
+  .navbar ul{
+    float: left;
+    padding: 10px 12px;
+    text-decoration: none;
+  }
+  
+
+.site-nav__link:after {
+    
+    border-bottom: 3px solid #1b1a19;
+    content: "";
+    display: block;
+    margin: 0.25em auto 0;
+    transition: width 250ms ease-in-out 0s;
+    width: 0;
+}
+.site-nav__link:hover:after {
+    transition: width 100ms ease-in-out 0s;
+    width: 100%;
+}
+   
+.navbar-brand{
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+}
