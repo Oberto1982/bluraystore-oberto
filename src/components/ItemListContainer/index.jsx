@@ -26,22 +26,13 @@ export default function ItemListContainer() {
     }
     
     
-
-
     const prom = filtro.get();
     
 
 
     prom.then((snapshot)=>{
 
-      //console.log ('se consultaron los datos');
-      //console.log (snapshot);
-
       if (snapshot.size > 0 ){
-
-        //console.log(snapshot.docs.map(doc => doc.data()))
-        //console.log(snapshot.docs.map(doc => doc.id))
-
         
         setItems(snapshot.docs.map(doc => {
           return {id:doc.id,  ...doc.data()}
@@ -49,11 +40,9 @@ export default function ItemListContainer() {
 
         ))
 
-       
-
       }
 
-      //setItems(datos)
+      
     })
 
   },[categoryId])

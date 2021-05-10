@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import {Link} from "react-router-dom";
 import {CartContext} from "../../context/CartContext";
-import {getFirestore, getFirebase} from '../../firebase'
+import {getFirestore} from '../../firebase'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import "./Cart.css";
@@ -28,17 +28,12 @@ export const Cart = () => {
 
         const db = getFirestore();
 
-     
-
         const ordersCollection = db.collection("orders")
-
 
         const date = firebase.firestore.Timestamp.fromDate(new Date());
 
-        
-
         const items = cart.map( cartItem =>{
-            return { id: cartItem.id, title:cartItem.title, price: cartItem.price}
+            return { id: cartItem.item.id, title:cartItem.item.title, price: cartItem.item.price}
         })
 
         console.log(items)
@@ -50,42 +45,31 @@ export const Cart = () => {
             setIdOrden(doc.id)
         })
         
+        //STOCK
         
-        
+        const itemsToUpdate = db.collection('items').where(
+            firebase.firestore.FieldPath.documentId(), 'in', cart.map(i=> i.item.id) // in: obtengo conjunto de items por id.
+        )
+
+        const batch = db.batch();
 
 
-        
-        const itemsCollection = db.collection('items')
-        .where(getFirebase().firestore.FieldPath.documentId(), 'in', cart.map(e => e.item.id))
+        itemsToUpdate.get()
+        .then( collection=>{
+            collection.docs.forEach(docSnapshot => {
+                batch.update(docSnapshot.ref,{
+                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity
+                })
+            })
 
-        itemsCollection.get()
-        .then(resultado =>{
-
-            const batch = db.batch()
-
-            for (const documento of resultado) {
-
-                const stockActual = documento.data().stock;
-
-                const itemDelCart = cart.find(cartItem => cartItem.item.id === documento.id);
-
-                const cantidadComprado = itemDelCart.quantity
-
-                const nuevoStock =  stockActual - cantidadComprado;
-
-
-                batch.update(documento.ref,
-                    {stock: nuevoStock}
-                )
-               
-                
-            }
-
-            batch.commit()
-
+            batch.commit().then(res =>{
+                console.log('resultado batch:', res)
+            })
         })
 
+        console.log(generarOrden)
     }
+        
 
     const noItemComp = 
     <div className="main">
@@ -95,17 +79,15 @@ export const Cart = () => {
          <Link to='/' className="back" >Volver al Home </Link>
          </div>
     
-     
-
     if(totalItems === 0) return noItemComp
 
         
-    
-
 
     return (
         <div className="main">
-            {idOrden? `Orden generada: ${idOrden}`: null}
+        <div className="orden">    
+            {idOrden? `Su Nro de Pedido es: ${idOrden}`: null}
+        </div>    
         <div className="main-item">   
             {cart.map(cartItem => (
                 <div className="main-btn" key={cartItem.item.id} >
@@ -125,7 +107,7 @@ export const Cart = () => {
 
                 </div>)
                 )}
-            <div className="main-btn">
+            <div className="main-btn">  
                 <p>Total Compra: {format(totalPrecio)}</p>
             </div>
            

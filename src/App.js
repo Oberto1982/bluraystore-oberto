@@ -43,9 +43,6 @@ function App() {
       <a href="https://web.whatsapp.com/send?phone=55229999999" className="float"  tooltip="Hola, te puedo ayudar?">
       <i className="fab fa-whatsapp"></i>
       </a>
-
-
-    
     </div>
 
     </BrowserRouter>

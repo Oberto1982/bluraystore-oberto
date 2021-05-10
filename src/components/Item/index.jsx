@@ -1,5 +1,4 @@
 import React from 'react';
-//import Counter from '../ItemCount';
 import "./item.css";
 import { format } from "../Format/format";
 
@@ -20,9 +19,6 @@ export const Item = ({ item, onAdd }) => {
       </div>
       <div className="sub-main">
     </div>
-     {/* <Counter /> */}
     </div>
-
-   
   );
 };

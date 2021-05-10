@@ -1,7 +1,5 @@
 import React from "react";
 import CartWidget from "../Cardwidget";
-
-
 import {Link, NavLink} from 'react-router-dom'
 import "./index.css";
 

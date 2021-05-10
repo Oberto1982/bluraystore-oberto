@@ -22,13 +22,6 @@ export const CartProvider = ({children})=>{
             
             return acumulador + itemActual.quantity
         },0);
-
-        
-    //    for (let cartItem of cart) {
-    //         totItems += cartItem.quantity;
-    //         precio += cartItem.quantity * cartItem.item.price; 
-
-    // }  FOR opcion alternativa al reduce, tiene mejor perfomance que el reduce.
     
     setTotalItems(totItems);
     setTotalPrecio(precio);
@@ -36,9 +29,6 @@ export const CartProvider = ({children})=>{
     }, [cart]) //agrego como dependencia el cart, para que recalcule cada vez que se ejecuta el useEffect.
 
 
-
-
-   
 
     const addItem = (newItem, newQuantity)=>{
 
